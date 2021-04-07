@@ -21,7 +21,8 @@ from questboard.views import (BoardListView, BoardCreateView,
                               QuestCreateView)
 
 urlpatterns = [
-    path('', BoardListView.as_view(), name='board-list'),
+    path('', BoardListView.as_view(), name='index'),
+    path('questboard/', BoardListView.as_view(), name='board-list'),
     path('questboard/new/', BoardCreateView.as_view(), name='board-create'),
     path('questboard/<int:id>/', questboard_view, name='board-detail'),
     path(
