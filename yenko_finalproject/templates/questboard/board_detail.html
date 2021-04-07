@@ -32,6 +32,7 @@
             {%for i in quest.stars_range %}
                 <img src="https://twemoji.maxcdn.com/2/svg/1f31f.svg" width="25" height="25">
             {% endfor %}
+            <a href="{% url 'quest-update' quest.id %}">Edit Quest</a>
         </div>
     {% endfor %}
 {% endblock %}

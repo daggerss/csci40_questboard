@@ -67,3 +67,20 @@ class QuestCreateView(CreateView):
     def get_success_url(self):
         id_ = self.kwargs.get("id")
         return reverse('board-detail', kwargs={'id':id_})
+
+
+class QuestUpdateView(UpdateView):
+    template_name = 'quest/quest_update.html'
+    form_class = QuestGeneralForm
+    queryset = QuestCard.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(QuestCard, id=id_)
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        id_ = self.object.subject_id
+        return reverse('board-detail', kwargs={'id':id_})
