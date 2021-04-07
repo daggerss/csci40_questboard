@@ -17,11 +17,16 @@ from django.contrib import admin
 from django.urls import path
 
 from questboard.views import (BoardListView, BoardCreateView,
-                              questboard_view)
+                              questboard_view, BoardUpdateView)
 
 urlpatterns = [
     path('', BoardListView.as_view(), name='board-list'),
     path('questboard/new/', BoardCreateView.as_view(), name='board-create'),
     path('questboard/<int:id>/', questboard_view, name='board-detail'),
+    path(
+        'questboard/<int:id>/update',
+        BoardUpdateView.as_view(),
+        name='board-update'
+    ),
     path('admin/', admin.site.urls),
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
-from django.views.generic import CreateView, ListView
+from django.views.generic import (CreateView, ListView,
+                                  UpdateView)
 
 
 from .models import QuestBoard, QuestCard
@@ -34,3 +35,16 @@ def questboard_view(request, id):
             'quest_list': quest_list
         }
     )
+
+
+class BoardUpdateView(UpdateView):
+    template_name = 'board_update.html'
+    form_class = QuestboardForm
+    queryset = QuestBoard.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(QuestBoard, id=id_)
+
+    def form_valid(self, form):
+        return super().form_valid(form)

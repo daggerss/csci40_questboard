@@ -12,6 +12,8 @@
         to fulfill the requirements for {{ board.subject_name }}.
     </p>
 
+    <a href="{% url 'board-update' board.id %}">Edit Questboard</a>
+
     {% for quest in quest_list %}
         <div>
             <h2>{{ quest.quest_name }}</h2>
