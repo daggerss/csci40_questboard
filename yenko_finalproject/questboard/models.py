@@ -59,3 +59,8 @@ class QuestCard(models.Model):
     @property
     def stars_range(self):
         return range(self.stars)
+
+    @property
+    def are_dibs_empty(self):
+        return (self.student1 == '' and
+                self.student2 == '' and self.student3 == '')

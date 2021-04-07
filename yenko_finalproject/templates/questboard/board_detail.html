@@ -20,6 +20,7 @@
             <h2>{{ quest.quest_name }}</h2>
             <p>{{ quest.description }}</p>
             <h3>Dibs</h3>
+            
             {% if quest.is_for_everyone %}
                 <p>All students will participate in this quest.</p>
             {% else %}
@@ -29,10 +30,16 @@
                     <li>{{ quest.student3 }}</li>
                 </ol>
             {% endif %}
+
             {%for i in quest.stars_range %}
                 <img src="https://twemoji.maxcdn.com/2/svg/1f31f.svg" width="25" height="25">
             {% endfor %}
-            <a href="{% url 'quest-update' quest.id %}">Edit Quest</a>
+
+            {% if quest.is_for_everyone or quest.are_dibs_empty %}
+                <a href="{% url 'quest-update' quest.id %}">Edit Quest</a>
+            {% else %}
+                <p>Cannot Edit</p>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock %}
