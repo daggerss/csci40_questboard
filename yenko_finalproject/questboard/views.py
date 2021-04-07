@@ -3,7 +3,12 @@ from django.shortcuts import render
 from django.views.generic import ListView
 
 
-from .models import QuestCard
+from .models import QuestBoard, QuestCard
+
+
+class BoardListView(ListView):
+    template_name = 'board_list.html'
+    queryset = QuestBoard.objects.all().order_by('subject_name')
 
 
 class QuestListView(ListView):

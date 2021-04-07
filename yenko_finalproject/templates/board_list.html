@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for board in object_list %}
+        <div>
+            <h2>{{ board.subject_name }}</h2>
+            <p>{{ board.description }}</p>
+            <p>
+                <strong>Required Stars:</strong>
+                {{ board.required_stars }}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock %}
