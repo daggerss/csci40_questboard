@@ -2,8 +2,21 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
+class QuestBoard(models.Model):
+    subject_name = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+    required_stars = models.IntegerField(default=1,
+        validators=[
+            MinValueValidator(0),
+        ]
+    )
+
+    def __str__(self):
+        return self.subject_name
+
+
 class QuestCard(models.Model):
-    name = models.CharField(max_length=100)
+    quest_name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     stars = models.IntegerField(default=1,
         validators=[
@@ -32,7 +45,7 @@ class QuestCard(models.Model):
     )
 
     def __str__(self):
-        return '{}: {} star(s)'.format(self.name, self.stars)
+        return '{}: {} star(s)'.format(self.quest_name, self.stars)
 
     @property
     def stars_range(self):
