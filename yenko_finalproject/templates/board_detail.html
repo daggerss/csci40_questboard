@@ -13,6 +13,7 @@
     </p>
 
     <a href="{% url 'board-update' board.id %}">Edit Questboard</a>
+    <a href="{% url 'quest-create' board.id %}">Add Quest</a>
 
     {% for quest in quest_list %}
         <div>

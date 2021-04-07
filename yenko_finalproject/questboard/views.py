@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 from django.views.generic import (CreateView, ListView,
                                   UpdateView)
@@ -6,7 +7,7 @@ from django.views.generic import (CreateView, ListView,
 
 from .models import QuestBoard, QuestCard
 
-from .forms import QuestboardForm
+from .forms import QuestboardForm, NewQuestForm
 
 
 class BoardCreateView(CreateView):
@@ -48,3 +49,21 @@ class BoardUpdateView(UpdateView):
 
     def form_valid(self, form):
         return super().form_valid(form)
+
+
+class QuestCreateView(CreateView):
+    template_name = 'quest_create.html'
+    form_class = NewQuestForm
+    queryset = QuestCard.objects.all()
+
+    def get_initial(self):
+        id_ = self.kwargs.get("id")
+        board = get_object_or_404(QuestBoard, id=id_)
+        return {'subject': board}
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        id_ = self.kwargs.get("id")
+        return reverse('board-detail', kwargs={'id':id_})
