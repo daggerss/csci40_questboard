@@ -33,3 +33,7 @@ class Questboard(models.Model):
 
     def __str__(self):
         return '{}: {} star(s)'.format(self.name, self.stars)
+
+    @property
+    def stars_range(self):
+        return range(self.stars)

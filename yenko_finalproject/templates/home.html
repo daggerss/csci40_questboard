@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for quest in object_list %}
+        <div>
+            <h2>{{ quest.name }}</h2>
+            <p>{{ quest.description }}</p>
+            <h3>Dibs</h3>
+            {% if quest.is_for_everyone %}
+                <p>All students will participate in this quest.</p>
+            {% else %}
+                <ol>
+                    <li>{{ quest.student1 }}</li>
+                    <li>{{ quest.student2 }}</li>
+                    <li>{{ quest.student3 }}</li>
+                </ol>
+            {% endif %}
+            {%for i in quest.stars_range %}
+                <img src="https://twemoji.maxcdn.com/2/svg/1f31f.svg" width="25" height="25">
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
