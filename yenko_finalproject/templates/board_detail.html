@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}Questboard{% endblock %}
+{% block title %}{{ board.subject_name }} Questboard{% endblock %}
 
-{% block heading %}Questboard{% endblock %}
+{% block heading %}{{ board.subject_name }} Questboard{% endblock %}
 
 {% block content %}
-    {% for quest in object_list %}
+    <p>{{ board.description }}</p>
+    <p>
+        Each student should collect 
+        <strong>{{ board.required_stars }} stars</strong> 
+        to fulfill the requirements for {{ board.subject_name }}.
+    </p>
+
+    {% for quest in quest_list %}
         <div>
-            <h2>{{ quest.name }}</h2>
+            <h2>{{ quest.quest_name }}</h2>
             <p>{{ quest.description }}</p>
             <h3>Dibs</h3>
             {% if quest.is_for_everyone %}

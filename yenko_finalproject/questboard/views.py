@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from django.views.generic import ListView
 
@@ -11,6 +11,15 @@ class BoardListView(ListView):
     queryset = QuestBoard.objects.all().order_by('subject_name')
 
 
-class QuestListView(ListView):
-    template_name = 'quest_list.html'
-    queryset = QuestCard.objects.all().order_by('-stars')
+def questboard_view(request, id):
+    board = QuestBoard.objects.get(id=id)
+    quest_list = board.quests.all().order_by('-stars')
+
+    return render(
+        request,
+        "board_detail.html",
+        {
+            'board': board,
+            'quest_list': quest_list
+        }
+    )
