@@ -16,6 +16,11 @@ class QuestBoard(models.Model):
 
 
 class QuestCard(models.Model):
+    subject = models.ForeignKey(
+        QuestBoard,
+        on_delete=models.CASCADE,
+        related_name='quests'
+    )
     quest_name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     stars = models.IntegerField(default=1,
