@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from questboard.views import (BoardListView, questboard_view)
+from questboard.views import (BoardListView, BoardCreateView,
+                              questboard_view)
 
 urlpatterns = [
     path('', BoardListView.as_view(), name='board-list'),
+    path('questboard/new/', BoardCreateView.as_view(), name='board-create'),
     path('questboard/<int:id>/', questboard_view, name='board-detail'),
     path('admin/', admin.site.urls),
 ]

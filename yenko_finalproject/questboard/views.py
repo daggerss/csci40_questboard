@@ -1,9 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView
 
 
 from .models import QuestBoard, QuestCard
+
+from .forms import QuestboardForm
+
+
+class BoardCreateView(CreateView):
+    template_name = 'board_create.html'
+    form_class = QuestboardForm
+    queryset = QuestBoard.objects.all()
+
+    def form_valid(self, form):
+        return super().form_valid(form)
 
 
 class BoardListView(ListView):

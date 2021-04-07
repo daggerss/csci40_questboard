@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="{% url 'board-create' %}">Add Questboard</a>
     {% for board in object_list %}
         <div>
             <h2>{{ board.subject_name }}</h2>
