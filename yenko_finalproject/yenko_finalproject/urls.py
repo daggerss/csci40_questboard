@@ -19,6 +19,6 @@ from django.urls import path
 from questboard.views import QuestListView
 
 urlpatterns = [
-    path('', QuestListView.as_view(), name='index'),
+    path('', QuestListView.as_view(), name='quest-list'),
     path('admin/', admin.site.urls),
 ]
