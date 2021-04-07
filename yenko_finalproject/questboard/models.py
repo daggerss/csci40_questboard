@@ -7,9 +7,7 @@ class QuestBoard(models.Model):
     subject_name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     required_stars = models.IntegerField(default=1,
-        validators=[
-            MinValueValidator(0),
-        ]
+        validators=[MinValueValidator(0)]
     )
 
     def __str__(self):
