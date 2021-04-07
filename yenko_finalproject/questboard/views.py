@@ -11,7 +11,7 @@ from .forms import QuestboardForm, QuestGeneralForm
 
 
 class BoardCreateView(CreateView):
-    template_name = 'board_create.html'
+    template_name = 'questboard/board_create.html'
     form_class = QuestboardForm
     queryset = QuestBoard.objects.all()
 
@@ -20,7 +20,7 @@ class BoardCreateView(CreateView):
 
 
 class BoardListView(ListView):
-    template_name = 'board_list.html'
+    template_name = 'questboard/board_list.html'
     queryset = QuestBoard.objects.all().order_by('subject_name')
 
 
@@ -30,7 +30,7 @@ def questboard_view(request, id):
 
     return render(
         request,
-        "board_detail.html",
+        "questboard/board_detail.html",
         {
             'board': board,
             'quest_list': quest_list
@@ -39,7 +39,7 @@ def questboard_view(request, id):
 
 
 class BoardUpdateView(UpdateView):
-    template_name = 'board_update.html'
+    template_name = 'questboard/board_update.html'
     form_class = QuestboardForm
     queryset = QuestBoard.objects.all()
 
@@ -52,7 +52,7 @@ class BoardUpdateView(UpdateView):
 
 
 class QuestCreateView(CreateView):
-    template_name = 'quest_create.html'
+    template_name = 'quest/quest_create.html'
     form_class = QuestGeneralForm
     queryset = QuestCard.objects.all()
 
