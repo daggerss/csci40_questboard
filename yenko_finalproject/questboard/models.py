@@ -54,7 +54,7 @@ class QuestCard(models.Model):
     )
 
     def __str__(self):
-        return '{}: {} star(s)'.format(self.quest_name, self.stars)
+        return '{}: {}'.format(self.subject.subject_name, self.quest_name)
 
     @property
     def stars_range(self):
