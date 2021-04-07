@@ -3,9 +3,9 @@ from django.shortcuts import render
 from django.views.generic import ListView
 
 
-from .models import Questboard
+from .models import QuestCard
 
 
 class QuestListView(ListView):
     template_name = 'home.html'
-    queryset = Questboard.objects.all().order_by('-stars')
+    queryset = QuestCard.objects.all().order_by('-stars')

@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class Questboard(models.Model):
+class QuestCard(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     stars = models.IntegerField(default=1,

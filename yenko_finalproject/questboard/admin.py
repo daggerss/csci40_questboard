@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Questboard
+from .models import QuestCard
 
 
-class QuestboardAdmin(admin.ModelAdmin):
-    model = Questboard
+class QuestCardAdmin(admin.ModelAdmin):
+    model = QuestCard
 
 
-admin.site.register(Questboard, QuestboardAdmin)
+admin.site.register(QuestCard, QuestCardAdmin)
