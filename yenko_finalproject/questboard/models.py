@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -13,6 +14,9 @@ class QuestBoard(models.Model):
 
     def __str__(self):
         return self.subject_name
+
+    def get_absolute_url(self):
+        return reverse('board-detail', kwargs={'id': self.id})
 
 
 class QuestCard(models.Model):
