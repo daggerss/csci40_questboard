@@ -10,7 +10,7 @@ class QuestboardForm(forms.ModelForm):
         fields = ['subject_name', 'description', 'required_stars']
 
 
-class NewQuestForm(forms.ModelForm):
+class QuestGeneralForm(forms.ModelForm):
 
     class Meta:
         model = QuestCard

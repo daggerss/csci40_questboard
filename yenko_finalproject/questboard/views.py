@@ -7,7 +7,7 @@ from django.views.generic import (CreateView, ListView,
 
 from .models import QuestBoard, QuestCard
 
-from .forms import QuestboardForm, NewQuestForm
+from .forms import QuestboardForm, QuestGeneralForm
 
 
 class BoardCreateView(CreateView):
@@ -53,7 +53,7 @@ class BoardUpdateView(UpdateView):
 
 class QuestCreateView(CreateView):
     template_name = 'quest_create.html'
-    form_class = NewQuestForm
+    form_class = QuestGeneralForm
     queryset = QuestCard.objects.all()
 
     def get_initial(self):
