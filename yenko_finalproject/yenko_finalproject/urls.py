@@ -16,8 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from questboard.views import (BoardListView, questboard_view,
-                              QuestListView)
+from questboard.views import (BoardListView, questboard_view)
 
 urlpatterns = [
     path('', BoardListView.as_view(), name='board-list'),
