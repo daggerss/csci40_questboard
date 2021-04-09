@@ -13,6 +13,7 @@
         to fulfill the requirements for {{ board.subject_name }}.
     </p>
 
+    <input type="button" class="copy-btn" data-link="{{ board.get_absolute_url }}" value="Share Questboard">
     <a href="{% url 'board-update' board.id %}">Edit Questboard</a>
     <a href="{% url 'quest-create' board.id %}">Add Quest</a>
 
@@ -76,5 +77,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="{% static 'js/confirm.js' %}"></script>
+    <script src="{% static 'js/board_script.js' %}"></script>
 {% endblock %}
