@@ -25,9 +25,39 @@
                 <p>All students will participate in this quest.</p>
             {% else %}
                 <ol>
-                    <li>{{ quest.student1 }}</li>
-                    <li>{{ quest.student2 }}</li>
-                    <li>{{ quest.student3 }}</li>
+                    <li>
+                        {% if quest.student1 == '' %}
+                            <form action="{% url 'quest-signup' quest.id %}" method='POST'>
+                                {% csrf_token %}
+                                {{ student1_form }}
+                                <input type="submit" name="first" value="Sign Up">
+                            </form>
+                        {% else %}
+                            {{ quest.student1 }}
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if quest.student2 == '' %}
+                            <form action="{% url 'quest-signup' quest.id %}" method='POST'>
+                                {% csrf_token %}
+                                {{ student2_form }}
+                                <input type="submit" name="second" value="Sign Up">
+                            </form>
+                        {% else %}
+                            {{ quest.student2 }}
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if quest.student3 == '' %}
+                            <form action="{% url 'quest-signup' quest.id %}" method='POST'>
+                                {% csrf_token %}
+                                {{ student3_form }}
+                                <input type="submit" name="third" value="Sign Up">
+                            </form>
+                        {% else %}
+                            {{ quest.student3 }}
+                        {% endif %}
+                    </li>
                 </ol>
             {% endif %}
 

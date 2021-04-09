@@ -18,7 +18,8 @@ from django.urls import path
 
 from questboard.views import (BoardListView, BoardCreateView,
                               questboard_view, BoardUpdateView,
-                              QuestCreateView, QuestUpdateView)
+                              QuestCreateView, QuestUpdateView,
+                              signup_view)
 
 urlpatterns = [
     path('', BoardListView.as_view(), name='index'),
@@ -40,5 +41,6 @@ urlpatterns = [
         QuestUpdateView.as_view(),
         name='quest-update'
     ),
+    path('quest/<int:id>/signup', signup_view, name='quest-signup'),
     path('admin/', admin.site.urls),
 ]
