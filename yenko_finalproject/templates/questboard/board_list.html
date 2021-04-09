@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="{% url 'board-create' %}">Add Questboard</a>
+    <a class="btn white-btn" href="{% url 'board-create' %}">Add Questboard</a>
+    <div class="flex-container">
     {% for board in object_list %}
-        <div>
+        <div class="card-container">
             <h2>{{ board.subject_name }}</h2>
             <p>{{ board.description }}</p>
             <p>
-                <strong>Required Stars:</strong>
-                {{ board.required_stars }}
+                <strong>Requires {{ board.required_stars }} <img src="https://twemoji.maxcdn.com/2/svg/1f31f.svg" alt="Star Icon" width="25" height="25" valign="middle"></strong>
             </p>
-            <a href="{{ board.get_absolute_url }}">Open Questboard</a>
+            <a class="btn blue-btn" href="{{ board.get_absolute_url }}">Open Questboard</a>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}

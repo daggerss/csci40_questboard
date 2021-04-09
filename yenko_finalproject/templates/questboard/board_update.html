@@ -5,9 +5,13 @@
 {% block heading %}Edit Questboard{% endblock %}
 
 {% block content %}
-    <form action='' method='POST'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type='submit' value='Update'>
-    </form>
+    <div class="flex-container">
+        <div class="card-container">
+            <form action='' method='POST'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' class="btn blue-btn" value='Update'>
+            </form>
+        </div>
+    </div>
 {% endblock %}

@@ -6,74 +6,85 @@
 {% block heading %}{{ board.subject_name }} Questboard{% endblock %}
 
 {% block content %}
+    <!-- QuestBoard Information -->
     <p>{{ board.description }}</p>
     <p>
         Each student should collect 
-        <strong>{{ board.required_stars }} stars</strong> 
+        <strong>{{ board.required_stars }} <img src="https://twemoji.maxcdn.com/2/svg/1f31f.svg" alt="Star Icon" width="25" height="25" valign="middle"></strong> 
         to fulfill the requirements for {{ board.subject_name }}.
     </p>
 
-    <input type="button" class="copy-btn" data-link="{{ board.get_absolute_url }}" value="Share Questboard">
-    <a href="{% url 'board-update' board.id %}">Edit Questboard</a>
-    <a href="{% url 'quest-create' board.id %}">Add Quest</a>
+    <input type="button" class="btn white-btn copy-btn" data-link="{{ board.get_absolute_url }}" value="Share Questboard">
+    <a class="btn white-btn" href="{% url 'board-update' board.id %}">Edit Questboard</a>
+    <a class="btn white-btn" href="{% url 'quest-create' board.id %}">Add Quest</a>
 
-    {% for quest in quest_list %}
-        <div>
-            <h2>{{ quest.quest_name }}</h2>
-            <p>{{ quest.description }}</p>
-            <h3>Dibs</h3>
-            
-            {% if quest.is_for_everyone %}
-                <p>All students will participate in this quest.</p>
-            {% else %}
-                <ol>
-                    <li>
-                        {% if quest.student1 == '' %}
-                            <form action="{% url 'quest-signup' quest.id %}" method='POST'>
-                                {% csrf_token %}
-                                {{ student1_form }}
-                                <input type="submit" name="first" onclick="return confirmFunction()" value="Sign Up">
-                            </form>
-                        {% else %}
-                            {{ quest.student1 }}
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if quest.student2 == '' %}
-                            <form action="{% url 'quest-signup' quest.id %}" method='POST'>
-                                {% csrf_token %}
-                                {{ student2_form }}
-                                <input type="submit" name="second" onclick="return confirmFunction()" value="Sign Up">
-                            </form>
-                        {% else %}
-                            {{ quest.student2 }}
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if quest.student3 == '' %}
-                            <form action="{% url 'quest-signup' quest.id %}" method='POST'>
-                                {% csrf_token %}
-                                {{ student3_form }}
-                                <input type="submit" name="third" onclick="return confirmFunction()" value="Sign Up">
-                            </form>
-                        {% else %}
-                            {{ quest.student3 }}
-                        {% endif %}
-                    </li>
-                </ol>
-            {% endif %}
 
-            {%for i in quest.stars_range %}
-                <img src="https://twemoji.maxcdn.com/2/svg/1f31f.svg" width="25" height="25">
-            {% endfor %}
+    <!-- QuestCards -->
+    <div class="flex-container">
+        {% for quest in quest_list %}
+            <div class="card-container">
+                <h2>{{ quest.quest_name }}</h2>
+                <p>{{ quest.description }}</p>
 
-            {% if quest.is_for_everyone or quest.are_dibs_empty %}
-                <a href="{% url 'quest-update' quest.id %}">Edit Quest</a>
-            {% else %}
-                <p>Cannot Edit</p>
-            {% endif %}
-        </div>
-    {% endfor %}
+                <!-- SignUps -->
+                <h3>Dibs</h3>
+                
+                {% if quest.is_for_everyone %}
+                    <p>All students will participate in this quest.</p>
+                {% else %}
+                    <ol>
+                        <li>
+                            {% if quest.student1 == '' %}
+                                <form action="{% url 'quest-signup' quest.id %}" method='POST'>
+                                    {% csrf_token %}
+                                    {{ student1_form }}
+                                    <input type="submit" name="first" class="btn blue-btn" onclick="return confirmFunction()" value="Sign Up">
+                                </form>
+                            {% else %}
+                                {{ quest.student1 }}
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if quest.student2 == '' %}
+                                <form action="{% url 'quest-signup' quest.id %}" method='POST'>
+                                    {% csrf_token %}
+                                    {{ student2_form }}
+                                    <input type="submit" name="second" class="btn blue-btn" onclick="return confirmFunction()" value="Sign Up">
+                                </form>
+                            {% else %}
+                                {{ quest.student2 }}
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if quest.student3 == '' %}
+                                <form action="{% url 'quest-signup' quest.id %}" method='POST'>
+                                    {% csrf_token %}
+                                    {{ student3_form }}
+                                    <input type="submit" name="third" class="btn blue-btn" onclick="return confirmFunction()" value="Sign Up">
+                                </form>
+                            {% else %}
+                                {{ quest.student3 }}
+                            {% endif %}
+                        </li>
+                    </ol>
+                {% endif %}
+
+                <!-- Stars -->
+                <div>
+                    {%for i in quest.stars_range %}
+                        <img src="https://twemoji.maxcdn.com/2/svg/1f31f.svg" alt="Star Icon" width="35" height="35">
+                    {% endfor %}
+                </div>
+
+                <!-- Quest Edit -->
+                {% if quest.is_for_everyone or quest.are_dibs_empty %}
+                    <a class="btn blue-btn" href="{% url 'quest-update' quest.id %}">Edit Quest</a>
+                {% else %}
+                    <a class="btn white-btn disabled">Edit Quest</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 
 {% block scripts %}

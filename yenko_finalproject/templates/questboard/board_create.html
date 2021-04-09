@@ -5,9 +5,13 @@
 {% block heading %}Add Questboard{% endblock %}
 
 {% block content %}
-    <form action='' method='POST'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type='submit' value='Add'>
-    </form>
+    <div class="flex-container">
+        <div class="card-container">
+            <form action='' method='POST'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' class="btn blue-btn" value='Add'>
+            </form>
+        </div>
+    </div>
 {% endblock %}

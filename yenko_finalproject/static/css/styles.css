@@ -1,0 +1,162 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Montserrat:wght@400;700&display=swap');
+
+/* General Styling */
+
+body
+{
+    background-color: rgb(67,72,151);
+    margin: 0;
+    max-width: 100vw;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(245,245,245);
+    text-align: center;
+}
+
+h1, h2, h3
+{
+    font-family: 'Dela Gothic One', cursive;
+    font-weight: 400;
+}
+
+h1
+{
+    padding-top: 1em;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+
+ol
+{
+    width: 90%;
+    text-align: left;
+}
+
+/* Flexbox */
+
+.flex-container
+{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+}
+
+.card-container
+{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.flex-container > div
+{
+    background-color: rgb(245,245,245);
+    box-shadow: 0 8px 0 rgb(194, 194, 194);
+    color: rgb(27,27,27);
+    border-radius: 15px;
+    width: 35vw;
+    min-height: 60vh;
+    margin: 2em;
+    padding: 1em 2em 1.5em;
+}
+
+/* Links & Buttons */
+
+a
+{
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 700;
+}
+
+.btn
+{
+    margin: 1em;
+    padding: 1em 1.5em;
+    border-radius: 10px;
+}
+
+.white-btn
+{
+    background-color: rgb(245,245,245);
+    box-shadow: 0 5px 0 rgb(194, 194, 194);
+    color: rgb(27,27,27);
+}
+
+.white-btn:hover
+{
+    background-color: rgb(233, 233, 233);
+}
+
+.blue-btn
+{
+    background-color: rgb(67,72,151);
+    box-shadow: 0 5px 0 rgb(37, 42, 112);
+    color: rgb(245,245,245);
+}
+
+.blue-btn:hover
+{
+    background-color: rgb(62, 64, 114);
+}
+
+.white-btn:active, .blue-btn:active
+{
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+.disabled
+{
+    background-color: rgb(230, 230, 230);
+    cursor: not-allowed;
+}
+
+input[type=button], input[type=submit]
+{
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+}
+
+/* Form Fields */
+
+input[type=text], input[type=number], select, textarea
+{
+    padding: 12px 20px;
+    margin: 0.5em 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12pt;
+    display: inline-block;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea
+{
+    resize: none;
+}
+
+input[type=checkbox]
+{
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+/* Pseudo Navigation */
+
+.home
+{
+    position: fixed;
+    top: 0.5em;
+    left: 1em;
+}
