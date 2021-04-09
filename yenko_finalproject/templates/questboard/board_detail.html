@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ board.subject_name }} Questboard{% endblock %}
 
@@ -30,7 +31,7 @@
                             <form action="{% url 'quest-signup' quest.id %}" method='POST'>
                                 {% csrf_token %}
                                 {{ student1_form }}
-                                <input type="submit" name="first" value="Sign Up">
+                                <input type="submit" name="first" onclick="return confirmFunction()" value="Sign Up">
                             </form>
                         {% else %}
                             {{ quest.student1 }}
@@ -41,7 +42,7 @@
                             <form action="{% url 'quest-signup' quest.id %}" method='POST'>
                                 {% csrf_token %}
                                 {{ student2_form }}
-                                <input type="submit" name="second" value="Sign Up">
+                                <input type="submit" name="second" onclick="return confirmFunction()" value="Sign Up">
                             </form>
                         {% else %}
                             {{ quest.student2 }}
@@ -52,7 +53,7 @@
                             <form action="{% url 'quest-signup' quest.id %}" method='POST'>
                                 {% csrf_token %}
                                 {{ student3_form }}
-                                <input type="submit" name="third" value="Sign Up">
+                                <input type="submit" name="third" onclick="return confirmFunction()" value="Sign Up">
                             </form>
                         {% else %}
                             {{ quest.student3 }}
@@ -72,4 +73,8 @@
             {% endif %}
         </div>
     {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+        <script src="{% static 'js/confirm.js' %}"></script>
 {% endblock %}
